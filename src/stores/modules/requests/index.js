@@ -4,7 +4,11 @@ import { requestsMutations } from "./mutations";
 
 export const requestsModule = {
   namespaced: true,
-  state() {},
+  state() {
+    return {
+      requests: [],
+    };
+  },
   mutations: requestsMutations,
   getters: requestsGetters,
   actions: requestsActions,
