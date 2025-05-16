@@ -1,6 +1,7 @@
 import { createStore } from "vuex";
 import { coachesModule } from "./modules/coaches";
 import { requestsModule } from "./modules/requests";
+// import { nanoid } from "nanoid";
 
 export const store = createStore({
   state() {
