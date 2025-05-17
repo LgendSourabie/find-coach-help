@@ -1,24 +1,26 @@
 <template>
-  <base-dialog :show="!!error" @close="handleError" title="An error occurred">
-    {{ error }}
-  </base-dialog>
-  <section>
-    <base-card>
-      <header>
-        <h2>Request received</h2>
-      </header>
-      <base-spinner v-if="isLoading"></base-spinner>
-      <ul v-else-if="hasRequests">
-        <request-item
-          v-for="request in receivedRequests"
-          :key="request.id"
-          :email="request.userMail"
-          :message="request.message"
-        ></request-item>
-      </ul>
-      <h3 v-else>You have not received any requests yet!</h3>
-    </base-card>
-  </section>
+  <div>
+    <base-dialog :show="!!error" @close="handleError" title="An error occurred">
+      {{ error }}
+    </base-dialog>
+    <section>
+      <base-card>
+        <header>
+          <h2 id="check">Request received</h2>
+        </header>
+        <base-spinner v-if="isLoading"></base-spinner>
+        <ul v-else-if="hasRequests">
+          <request-item
+            v-for="request in receivedRequests"
+            :key="request.id"
+            :email="request.userMail"
+            :message="request.message"
+          ></request-item>
+        </ul>
+        <h3 v-else>You have not received any requests yet!</h3>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -30,11 +32,19 @@ export default {
   },
   data() {
     return {
+      da: ["ful"],
       isLoading: true,
       error: null,
     };
   },
+  mounted() {
+    console.log("Mounted", this.da);
+    console.log("Mounted", document.getElementById("check")?.innerHTML);
+  },
   created() {
+    console.log("Created", this.da);
+    console.log("Created", document.getElementById("check")?.innerHTML);
+
     this.loadRequests();
   },
   methods: {

@@ -6,6 +6,7 @@ export const coachesModule = {
   namespaced: true,
   state() {
     return {
+      lastFetched: null,
       coaches: [
         {
           id: "c1",

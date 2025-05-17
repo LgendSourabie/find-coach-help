@@ -25,7 +25,11 @@ export const coachesActions = {
     });
   },
 
-  async loadCoaches(context, _payload) {
+  async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
+
     const response = await fetch(
       `https://vue-http-ab28d-default-rtdb.europe-west1.firebasedatabase.app/coaches.json`
     );
@@ -53,5 +57,6 @@ export const coachesActions = {
     }
 
     context.commit("setCoaches", coaches);
+    context.commit("setFetchedTimestamp");
   },
 };

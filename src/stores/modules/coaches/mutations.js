@@ -6,4 +6,8 @@ export const coachesMutations = {
   setCoaches(state, payload) {
     state.coaches = payload;
   },
+
+  setFetchedTimestamp(state) {
+    state.lastFetched = new Date().getTime();
+  },
 };
